@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class animTrig1 : MonoBehaviour
 {
-    [SerializeField] private string animHappen =  "behind";
+    [SerializeField] private string animHappen = "behind";
     Animator anim;
     AudioSource audioSource;
     AudioClip audioClip;
@@ -21,14 +21,28 @@ public class animTrig1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if (other.tag == "Player")
         {
             anim.SetBool(animHappen, true);
         }
+    }
+    
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            anim.SetBool(animHappen, false);
+        }
+    }
+
+
+    public void playAudio()
+    {
+        audioSource.PlayOneShot(audioClip);
     }
 }
