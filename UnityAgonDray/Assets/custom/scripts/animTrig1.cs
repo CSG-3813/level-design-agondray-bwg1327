@@ -8,6 +8,7 @@ public class animTrig1 : MonoBehaviour
     Animator anim;
     AudioSource audioSource;
     AudioClip audioClip;
+    bool first = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +30,12 @@ public class animTrig1 : MonoBehaviour
         if (other.tag == "Player")
         {
             anim.SetBool(animHappen, true);
+            if (first == true)
+            {
+                playAudio();
+                first = false;
+            }
+            
         }
     }
     
